@@ -88,3 +88,85 @@ const usersXeno = [{
         longitude :  1.43222
     }
 ];
+
+// 1
+const tabData = [];
+
+// 2
+tabData.push(usersHuman, usersPet, usersXeno);
+
+// 3
+function cardHuman(objet) { // 4
+    const article = document.createElement("article");
+    const titre = document.createElement("h2");
+    titre.textContent = objet.name;
+    const image = document.createElement("img");
+    image.setAttribute("src", objet.avatar);
+    image.setAttribute("alt", `Portrait de : ${objet.name}`);
+    const texte = document.createElement("p");
+    texte.textContent = `${objet.age} ans - ${objet.email}`;
+    article.appendChild(titre);
+    article.appendChild(image);
+    article.appendChild(texte);
+    article.setAttribute("class", "card");
+    return article;
+}
+
+// 5
+function cardPet(objet) { // 6
+    const article = document.createElement("article");
+    const titre = document.createElement("h2");
+    titre.textContent = objet.name;
+    const image = document.createElement("img");
+    image.setAttribute("src", objet.avatar);
+    image.setAttribute("alt", `Portrait de : ${objet.name}`);
+    const texte = document.createElement("p");
+    texte.textContent = `${objet.age} ans - ${objet.espece} - ${objet.propriétaire}`;
+    article.appendChild(titre);
+    article.appendChild(image);
+    article.appendChild(texte);
+    article.setAttribute("class", "card");
+    return article;
+}
+
+// 7
+function cardXeno(objet) { // 8
+    const article = document.createElement("article");
+    const titre = document.createElement("h2");
+    titre.textContent = objet.name;
+    const image = document.createElement("img");
+    image.setAttribute("src", objet.avatar);
+    image.setAttribute("alt", `Portrait de : ${objet.name}`);
+    const texte = document.createElement("p");
+    texte.textContent = `${objet.age} ans - ${objet.espece} - ${objet.menace}`;
+    article.appendChild(titre);
+    article.appendChild(image);
+    article.appendChild(texte);
+    article.setAttribute("class", "card");
+    return article;
+}
+
+// 9
+function profil(tab) {
+    const cardList = [];  // 10
+
+    for (const element of tab) {  // 11
+        if (tab.type == "humain") {
+            cardHuman(element);
+            cardList.push(cardHuman(element));
+        } else if ((tab.type == "animal de compagnie")) {
+                cardPet(element);
+                cardList.push(cardPet(element));                
+                } else if (tab.type == "Xeno") {
+                cardXeno(element);
+                cardList.push(cardXeno(element));    
+                } else {
+                console.log("Type de Profil non Existant")
+                }
+    }
+    return cardList // 12
+}
+
+profil(usersHuman);
+profil(usersPet);
+profil(usersXeno);

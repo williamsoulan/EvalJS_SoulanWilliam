@@ -49,7 +49,6 @@ window.addEventListener("mouseup", () => {
 })
 
 // 8
-
 const getMeteoJson = async () => {
     return await fetch ("https://prevision-meteo.ch/services/json/toulouse")
         .then(response => {
