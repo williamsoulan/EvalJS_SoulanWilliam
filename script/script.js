@@ -165,14 +165,13 @@ function profil(tab) {
                     console.log("Type de Profil non Existant");
                     }
     }
-
     return cardList; // 12
 };
 
 // 13
-console.log(profil(usersHuman));
-console.log(profil(usersPet));
-console.log(profil(usersXeno));
+// console.log(profil(usersHuman));
+// console.log(profil(usersPet));
+// console.log(profil(usersXeno));
 
 // 14
 function profilAll(tab) {
@@ -189,3 +188,32 @@ function profilAll(tab) {
 }
 
 profilAll(tabData); // 17
+
+
+// LEAFLET
+
+// 1
+var map = L.map('map').setView([43.604429, 1.443812], 14);
+
+// 2
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+// 3 
+function markerProfil(objet) {
+    let icon = L.icon ({   // 4
+        iconUrl : objet.icon,
+        iconSize : [50,83],
+        iconAnchor : [25,83],
+    });
+    L.marker([objet.latitude, objet.longitude], {icon: icon}).addTo(map); // 5
+};
+
+// 6
+for (let tab of tabData) {
+    for (let element of tab) {
+        markerProfil(element);
+    }
+}

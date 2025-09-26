@@ -12,11 +12,12 @@ Object.assign(info.style, {
 
 // 3
 const cardMeteo = document.querySelector(".cardMeteo");
-const charger = document.querySelector("button")
+const charger = document.querySelector("button");
 
 cardMeteo.insertBefore(info, charger);
 
 // 4
+// Je n'arrivais pas a faire de retour à la ligne avec \n donc j'ai créé des <p> pour avoir un rendu visuel plus propre
 for (let i = 0; i < 4; i++) {
     const p = document.createElement("p");
     p.setAttribute("id", "p" + (i+1));
@@ -35,7 +36,7 @@ function addInfo(element, texte) {
 
 // 5
 function bouton() { 
-    charger.setAttribute("class", "button__cardMeteo")
+    charger.setAttribute("class", "button__cardMeteo");
 }
 
 // 6
@@ -45,7 +46,7 @@ charger.addEventListener("mousedown", () => {
 
 // 7
 window.addEventListener("mouseup", () => {
-    charger.style.backgroundColor = null;
+    charger.style.backgroundColor = '';
 })
 
 // 8
