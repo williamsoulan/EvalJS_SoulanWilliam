@@ -150,23 +150,42 @@ function cardXeno(objet) { // 8
 function profil(tab) {
     const cardList = [];  // 10
 
-    for (const element of tab) {  // 11
-        if (tab.type == "humain") {
-            cardHuman(element);
+    for (let element of tab) {  // 11
+
+        if (element.type == "humain") {
             cardList.push(cardHuman(element));
-        } else if ((tab.type == "animal de compagnie")) {
-                cardPet(element);
-                cardList.push(cardPet(element));                
-                } else if (tab.type == "Xeno") {
-                cardXeno(element);
-                cardList.push(cardXeno(element));    
-                } else {
-                console.log("Type de Profil non Existant")
-                }
+
+        } else if ((element.type == "animal de compagnie")) {
+                    cardList.push(cardPet(element)); 
+
+                } else if (element.type == "Xeno") {
+                    cardList.push(cardXeno(element));    
+
+                    } else {
+                    console.log("Type de Profil non Existant");
+                    }
     }
-    return cardList // 12
+
+    return cardList; // 12
+};
+
+// 13
+console.log(profil(usersHuman));
+console.log(profil(usersPet));
+console.log(profil(usersXeno));
+
+// 14
+function profilAll(tab) {
+    const profils = document.querySelector(".profils"); // 15
+    const cardTab = [];
+
+    for (let element of tab) { // 16
+        cardTab.push(...profil(element));
+    }
+
+    for (let i = 0; i < cardTab.length; i++) {
+    profils.appendChild(cardTab[i]);
+    }
 }
 
-profil(usersHuman);
-profil(usersPet);
-profil(usersXeno);
+profilAll(tabData); // 17
